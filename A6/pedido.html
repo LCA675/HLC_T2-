@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realizar un Pedido</title>
+    <script>
+        function mostrarDatos(event) {
+            event.preventDefault(); // Evita el envío del formulario
+            const form = document.getElementById('pedidoForm');
+            const nombre = form.nombre.value;
+            const plato = form.plato.value;
+            const cantidad = form.cantidad.value;
+            const observaciones = form.observaciones.value;
+
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.innerHTML = `
+                <h2>Grasias amego</h2>
+                <img src="Captura.PNG">
+                <h3>Datos del Pedido:</h3>
+                <p><strong>Nombre:</strong> ${nombre}</p>
+                <p><strong>Plato:</strong> ${plato}</p>
+                <p><strong>Cantidad:</strong> ${cantidad}</p>
+                <p><strong>Observaciones:</strong> ${observaciones}</p>
+            `;
+        }
+    </script>
+</head>
+<body style="background-color:papayawhip">
+<form id="pedidoForm" onsubmit="if(confirm('¿Estás seguro de enviar estos datos?')){mostrarDatos(event);}">
+    <h1>Realizar un Pedido</h1>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" autocomplete="off" required maxlength="50" min="3"> <br> <br>
+    <label for="plato">Plato:</label>
+
+    <input list="Platos" id="plato" autocomplete="off">
+        <datalist id="Platos" required>
+            <option value="Especialidad Kebab Mixto del Zapa👨‍✈️🥙"></option>
+            <option value="El durum socialista (salsa roja ;)👷‍♂️🌯"></option>
+            <option value="El plato de mi colega Mr.Bean"></option>
+        </datalist> <br> <br>
+
+    <label for="cantidad">Cantidad:</label>
+    <input type="number" id="cantidad" min="1" max="10" autocomplete="off" required> <br> <br>
+    
+    <label for="observaciones">Observaciones:</label>
+    <br>
+    <textarea id="observaciones" required minlength="1" maxlength="500" autocomplete="off" id="observaciones"></textarea> 
+    <br> <br>
+
+    <input type="submit" value="enviar" id="enviar">
+
+    <input type="reset" id="reset" value="reset" >
+    <br><br>
+    <a href="A3.html">Volver al índice</a>
+    
+</form>
+
+<div id="resultado"></div>
+
+
+</body>
+</html>
